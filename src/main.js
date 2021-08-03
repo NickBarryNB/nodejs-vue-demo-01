@@ -3,7 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+// 设置反向代理，前端请求默认发送到http://localhost:8443/api
+var axios = require('axios')
+axios.defaults.baseURL = 'http://localhost:8443/api'
+// 全局注册，之后可以再其他组件中通过this.$axios发送数据
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

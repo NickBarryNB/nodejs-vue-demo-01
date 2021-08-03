@@ -1,15 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+// 导入组件
+import Login from '../components/Login'
+import Appindex from '../components/home/Appindex'
+// import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    // 下面都是固定写法
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/index',
+      name: 'AppIndex',
+      component: Appindex
     }
+    // {
+    //   path: '/',
+    //   name: 'HelloWorld',
+    //   component: HelloWorld
+    // }
   ]
 })
