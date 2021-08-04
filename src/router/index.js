@@ -8,6 +8,8 @@ import Appindex from '../components/home/Appindex'
 Vue.use(Router)
 
 export default new Router({
+  // 前端路由mode：使用history路由模式，不需要加#访问url目录,另一种是hash模式，即使用#/监听定位
+  mode: 'history',
   routes: [
     // 下面都是固定写法
     {
@@ -18,7 +20,11 @@ export default new Router({
     {
       path: '/index',
       name: 'AppIndex',
-      component: Appindex
+      component: Appindex,
+      // 在需要拦截的路由中加一条元数据，设置一个 requireAuth 字段
+      meta: {
+        requireAuth: true
+      }
     }
     // {
     //   path: '/',
