@@ -1,15 +1,15 @@
-<template>
-  <div>
-    Hello World!
-  </div>
-</template>
+<!--<template>-->
+<!--  <div>-->
+<!--    Hello World!-->
+<!--  </div>-->
+<!--</template>-->
 
-<script>
-export default {
-  name: 'AppIndex'
-}
-</script>
+<!--<script>-->
+<!--export default {-->
+<!--  name: 'AppIndex'-->
+<!--}-->
+<!--</script>-->
 
-<style scoped>
+<!--<style scoped>-->
 
-</style>
+<!--</style>-->

@@ -3,6 +3,8 @@ import Router from 'vue-router'
 // 导入组件
 import Login from '../components/Login'
 import Appindex from '../components/home/Appindex'
+import Home from '../components/Home'
+import LibraryIndex from '../components/library/LibraryIndex'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -18,13 +20,30 @@ export default new Router({
       component: Login
     },
     {
-      path: '/index',
-      name: 'AppIndex',
-      component: Appindex,
-      // 在需要拦截的路由中加一条元数据，设置一个 requireAuth 字段
-      meta: {
-        requireAuth: true
-      }
+      path: '/home',
+      name: 'Home',
+      component: Home,
+      // home页面并不需要被访问
+      redirect: '/index',
+      children: [
+        {
+          path: '/index',
+          name: 'AppIndex',
+          component: Appindex,
+          // 在需要拦截的路由中加一条元数据，设置一个 requireAuth 字段
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/library',
+          name: 'LibraryIndex',
+          component: LibraryIndex,
+          meta: {
+            requireAuth: true
+          }
+        }
+      ]
     }
     // {
     //   path: '/',
