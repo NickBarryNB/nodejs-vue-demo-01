@@ -37,7 +37,20 @@
 
 <script>
 export default {
-  name: 'SideMenu'
+  name: 'SideMenu',
+  data () {
+    return {
+      cid: ''
+    }
+  },
+  // 响应LibraryIndex中的触发事件
+  // emit，即触发，在子组件中使用 $emit 方法，即可触发在父组件中定义的事件
+  methods: {
+    handleSelect (key, keyPath) {
+      this.cid = key
+      this.$emit('indexSelect')
+    }
+  }
 }
 </script>
 
