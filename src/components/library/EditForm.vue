@@ -22,6 +22,8 @@
         </el-form-item>
         <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
           <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
+<!--          在表单中封面字段的位置添加uploadImage组件-->
+          <img-upload @onUpload="uploadImg" ref="imgUpload"></img-upload>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
@@ -49,8 +51,10 @@
 </template>
 
 <script>
+import ImgUpload from './ImageUpload'
 export default {
   name: 'EditForm',
+  components: {ImgUpload},
   data () {
     return {
       dialogFormVisible: false,
@@ -102,6 +106,9 @@ export default {
             this.$emit('onSubmit')
           }
         })
+    },
+    uploadImg () {
+      this.form.cover = this.$refs.imgUpload.url
     }
   }
 }
