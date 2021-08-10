@@ -5,6 +5,7 @@ import Login from '../components/Login'
 import Appindex from '../components/home/Appindex'
 import Home from '../components/Home'
 import LibraryIndex from '../components/library/LibraryIndex'
+import Register from '../components/Register'
 // import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
@@ -18,6 +19,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'Regitser',
+      component: Register
     },
     {
       path: '/home',

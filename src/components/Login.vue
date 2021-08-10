@@ -13,6 +13,7 @@
       </el-form-item>
       <el-form-item style="width: 100%">
         <el-button type="primary" style="width: 100%;background: #505458;border: none" v-on:click="login">登录</el-button>
+        <router-link to="register"><el-button type="primary" style="width: 100%;background: #505458;border: none">去注册</el-button></router-link>
       </el-form-item>
     </el-form>
   </el-table-body>
@@ -84,6 +85,10 @@ export default {
             _this.$store.commit('login', _this.loginForm)
             var path = this.$route.query.redirect
             this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
+          } else {
+            this.$alert(successResponse.data.message, '用户名或者密码不对，请重新输入！', {
+              confirmButtonText: '确定'
+            })
           }
         })
         .catch(failResponse => {
