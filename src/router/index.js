@@ -6,7 +6,6 @@ import Appindex from '../components/home/Appindex'
 import Home from '../components/Home'
 import LibraryIndex from '../components/library/LibraryIndex'
 import Register from '../components/Register'
-// import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
@@ -15,6 +14,11 @@ export default new Router({
   mode: 'history',
   routes: [
     // 下面都是固定写法
+    {
+      path: '/',
+      name: 'None',
+      redirect: '/login'
+    },
     {
       path: '/login',
       name: 'Login',
@@ -51,10 +55,5 @@ export default new Router({
         }
       ]
     }
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // }
   ]
 })
