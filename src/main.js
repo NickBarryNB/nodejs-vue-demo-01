@@ -10,6 +10,8 @@ import store from './store'
 // 设置反向代理，前端请求默认发送到http://localhost:8443/api
 var axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8443/api'
+// 让前端能够带上 cookie，我们需要通过 axios 主动开启 withCredentials 功能
+axios.defaults.withCredentials = true
 // 全局注册，之后可以再其他组件中通过this.$axios发送数据
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
@@ -21,8 +23,10 @@ Vue.use(ElementUI)
 // 如果存在，则放行，否则跳转到登录页面，并存储访问的页面路径（以便在登录后跳转到访问页）
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {
-    if (store.state.user.username) {
-      next()
+    if (store.state.user) {
+      axios.get('/authentication').then(resp => {
+        if (resp) next()
+      })
     } else {
       next({
         path: 'login',
@@ -32,8 +36,7 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-}
-)
+})
 
 /* eslint-disable no-new */
 new Vue({
